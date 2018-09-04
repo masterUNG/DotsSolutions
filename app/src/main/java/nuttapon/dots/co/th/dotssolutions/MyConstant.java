@@ -7,7 +7,27 @@ public class MyConstant {
     private String urlGetUserWhereCustID = "https://www.dots.co.th/App/getUserWherePhone.php";
 
 
+    private int[] iconInts = new int[]{
+            R.drawable.ic_action_dash,
+            R.drawable.ic_action_package,
+            R.drawable.ic_action_ebill,
+            R.drawable.ic_action_billcycler,
+            R.drawable.ic_action_service,
+            R.drawable.ic_action_exit
+    };
+
+
+
     //  Array
+    private String[] titleMenuStrings = new String[]{
+            "Dash Board",
+            "Package",
+            "eBil",
+            "Billing Cycle",
+            "Service",
+            "Exit"
+    };
+
     private String[] columnTcust = new String[]{
             "CustID",
             "Fname",
@@ -18,6 +38,21 @@ public class MyConstant {
             "CusStatusSubName"
     };
 
+
+
+
+
+
+//    Getter
+
+
+    public int[] getIconInts() {
+        return iconInts;
+    }
+
+    public String[] getTitleMenuStrings() {
+        return titleMenuStrings;
+    }
 
     public String[] getColumnTcust() {
         return columnTcust;
