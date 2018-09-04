@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,11 +35,18 @@ public class ServiceActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarService);
         setSupportActionBar(toolbar);
 
+//        Setup Name
         String firstName = findValueFromJSON(columnStrings[1]);
         String lastName = findValueFromJSON(columnStrings[2]);
         nameAnSurString = firstName + " " + lastName;
-
         getSupportActionBar().setSubtitle(nameAnSurString);
+
+//        Setup Phone
+        phoneString = findValueFromJSON(columnStrings[3]);
+        TextView textView = findViewById(R.id.txtPhone);
+        textView.setText(phoneString);
+
+
 
     }
 
