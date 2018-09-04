@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -35,8 +38,82 @@ public class ServiceActivity extends AppCompatActivity {
 //        Create Toolbar
         createToolbar();
 
+//        Create Menu
+        createMenu();
+
+//        Add Fragment
+        addFragment(savedInstanceState);
 
     }   // Main Method
+
+    private void addFragment(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.contentServiceFragment, new DashBoardFragment())
+                    .commit();
+
+        }
+    }
+
+    private void createMenu() {
+        ListView listView = findViewById(R.id.listViewMenu);
+        MenuAdapter menuAdapter = new MenuAdapter(ServiceActivity.this,
+                myConstant.getTitleMenuStrings(), myConstant.getIconInts());
+        listView.setAdapter(menuAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                moveToFragment(position);
+            }
+        });
+
+    }
+
+    private void moveToFragment(int position) {
+        switch (position) {
+            case 0:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment, new DashBoardFragment())
+                        .commit();
+                drawerLayout.closeDrawers();
+                break;
+            case 1:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment, new PackageFragment())
+                        .commit();
+                drawerLayout.closeDrawers();
+                break;
+            case 2:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment, new EbillFragment())
+                        .commit();
+                drawerLayout.closeDrawers();
+                break;
+            case 3:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment, new BillingCyclerFragment())
+                        .commit();
+                drawerLayout.closeDrawers();
+                break;
+            case 4:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment, new ServiceFragment())
+                        .commit();
+                drawerLayout.closeDrawers();
+                break;
+            case 5:
+                finish();
+                break;
+        }
+    }
 
     private void createToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbarService);
@@ -115,7 +192,6 @@ public class ServiceActivity extends AppCompatActivity {
         }
 
 
-
     }
 
     private void getValueFromPreference() {
@@ -123,8 +199,6 @@ public class ServiceActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
         jsonUserString = sharedPreferences.getString("User", "");
         Log.d("4SepV1", "jsonUserString ==> " + jsonUserString);
-
-
 
 
     }
