@@ -6,6 +6,7 @@
 
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>
+    <string name="current">ยอดค้างชำระ</string>
 
 
 </resources>
