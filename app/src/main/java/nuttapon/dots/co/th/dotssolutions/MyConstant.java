@@ -3,9 +3,8 @@ package nuttapon.dots.co.th.dotssolutions;
 public class MyConstant {
 
 //    URL
-
     private String urlGetUserWhereCustID = "https://www.dots.co.th/App/getUserWherePhone.php";
-
+    private String urlGetBalanceAWhereCustIDAnIsCancel = "https://www.dots.co.th/App/getBalanceAWhereCustID_iscancel.php";
 
     private int[] iconInts = new int[]{
             R.drawable.ic_action_dash,
@@ -33,9 +32,8 @@ public class MyConstant {
             "Fname",
             "Lname",
             "Mobile",
-            "CustName",
             "CustStatusName",
-            "CusStatusSubName"
+            "CustStatusSubName"
     };
 
 
@@ -45,6 +43,10 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String getUrlGetBalanceAWhereCustIDAnIsCancel() {
+        return urlGetBalanceAWhereCustIDAnIsCancel;
+    }
 
     public int[] getIconInts() {
         return iconInts;
